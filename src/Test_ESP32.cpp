@@ -1,6 +1,7 @@
 #include <WiFi.h>
 #include <WebServer.h>
 #include "secrets.h"
+#include <Arduino.h>
 
 WebServer server(80);  // Puerto 80
 
