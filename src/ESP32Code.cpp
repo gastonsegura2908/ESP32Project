@@ -24,7 +24,7 @@ void setup() {
   randomSeed(analogRead(0));  // Inicializa el generador de números aleatorios
 
   WiFi.begin(ssid, password);
-  Serial.print("Conectando");
+  Serial.print("Conectando...");
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500); 
