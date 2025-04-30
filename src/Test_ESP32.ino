@@ -1,8 +1,6 @@
 #include <WiFi.h>
 #include <WebServer.h>
-
-const char* ssid = "MERCUSYS_4C8C";
-const char* password = "inaramelu";
+#include "secrets.h"
 
 WebServer server(80);  // Puerto 80
 
