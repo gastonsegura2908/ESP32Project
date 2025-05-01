@@ -2,6 +2,7 @@
 #include <WebServer.h>
 #include "secrets.h"
 #include <Arduino.h>
+#include <HTTPClient.h> 
 
 WebServer server(80);  // Puerto 80
 
@@ -11,6 +12,26 @@ String getTemperatura() {
   return "{\"temperatura\": " + String(temp, 1) + "}";
 }
 
+void postTemperatura() {
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(api_url);
+    http.addHeader("Content-Type", "application/json");
+
+    String payload = getTemperatura();
+    int httpResponseCode = http.POST(payload);
+
+    Serial.print("POST a API: ");
+    Serial.println(payload);
+    Serial.print("Código de respuesta: ");
+    Serial.println(httpResponseCode);
+
+    http.end();
+  } else {
+    Serial.println("WiFi no conectado");
+  }
+}
+
 void handleRoot() {
   server.send(200, "text/plain", "API REST ESP32");
 }
@@ -18,6 +39,9 @@ void handleRoot() {
 void handleTemperatura() {
   server.send(200, "application/json", getTemperatura());
 }
+
+unsigned long lastPostTime = 0;
+const unsigned long interval = 30000;  // 30 segundos
 
 void setup() {
   Serial.begin(115200);
@@ -42,4 +66,10 @@ void setup() {
 
 void loop() {
   server.handleClient();
+
+  unsigned long currentMillis = millis();
+  if (currentMillis - lastPostTime >= interval) {
+    lastPostTime = currentMillis;
+    postTemperatura();
+  }
 }
