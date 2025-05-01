@@ -7,3 +7,4 @@ secrets.h
 *.elf
 *.bin
 *.map
+.env
