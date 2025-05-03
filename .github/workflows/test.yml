@@ -1,0 +1,23 @@
+name: Test ESP32 Project
+
+on: [push, pull_request]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install PlatformIO
+      run: |
+        pip install platformio
+
+    - name: Run tests (host)
+      run: |
+        pio test -e native
