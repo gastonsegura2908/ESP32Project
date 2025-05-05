@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-API_KEY = os.getenv("API_KEY")
+API_KEY = os.getenv("API_KEY_PY")
 app = Flask(__name__)
 dataBuffer = []
 csvFilePath = 'temperaturas.csv'

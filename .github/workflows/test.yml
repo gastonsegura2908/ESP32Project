@@ -17,5 +17,13 @@ jobs:
     - name: Install PlatformIO
       run: pip install platformio
 
+    - name: Crear secrets.cpp
+      run: |
+        echo '#include "secrets.h"' > src/secrets.cpp
+        echo "const char* ssid = \"${{ secrets.WIFI_SSID }}\";" >> src/secrets.cpp
+        echo "const char* password = \"${{ secrets.WIFI_PASSWORD }}\";" >> src/secrets.cpp
+        echo "const char* api_url = \"${{ secrets.API_URL }}\";" >> src/secrets.cpp
+        echo "const char* api_key = \"${{ secrets.API_KEY }}\";" >> src/secrets.cpp
+
     - name: Compile for ESP32 (without uploading)
       run: pio run -e esp32dev
