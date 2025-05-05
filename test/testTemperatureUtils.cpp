@@ -20,8 +20,6 @@ void testGenerateTemperaturePayloadValidJson() {
     TEST_ASSERT_TRUE(temp >= 20.0 && temp <= 30.0);
 }
 
-//#ifdef UNIT_TEST
-// This code only runs when in test mode
 void setup() {
     Serial.begin(115200);
     delay(2000); // Give the serial monitor time to open
@@ -31,6 +29,4 @@ void setup() {
 }
 
 void loop() {
-    // Nothing to do here
 }
-//#endif
