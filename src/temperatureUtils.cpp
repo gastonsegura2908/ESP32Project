@@ -6,7 +6,7 @@
  * @return String con el objeto JSON.
  */
 String generateTemperaturePayload() {
-    JsonDocument jsonDoc;  // ✅ Se evita el uso explícito de StaticJsonDocument
+    JsonDocument jsonDoc;  
     float temperature = random(200, 300) / 10.0;  // Entre 20.0 y 30.0
     jsonDoc["temperatura"] = temperature;
 

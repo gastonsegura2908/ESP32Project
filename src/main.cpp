@@ -1,4 +1,4 @@
-#ifndef UNIT_TEST
+//#ifndef UNIT_TEST
 
 #include <WiFi.h>
 #include <WebServer.h>
@@ -13,6 +13,7 @@ WebServer server(80);  ///< Servidor HTTP en el puerto 80
 unsigned long lastPostTime = 0;
 const unsigned long postInterval = 30000;  ///< Intervalo de POST en milisegundos
 
+#ifndef UNIT_TEST
 /**
  * @brief Configura la conexión WiFi y el servidor HTTP.
  */
