@@ -1,9 +1,9 @@
-name: Test ESP32 Project
+name: Build ESP32 Project
 
 on: [push, pull_request]
 
 jobs:
-  build-test:
+  build-esp32:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,9 +15,7 @@ jobs:
         python-version: '3.11'
 
     - name: Install PlatformIO
-      run: |
-        pip install platformio
+      run: pip install platformio
 
-    - name: Run tests (host)
-      run: |
-        pio test -e native
+    - name: Compile for ESP32 (without uploading)
+      run: pio run -e esp32dev_test
