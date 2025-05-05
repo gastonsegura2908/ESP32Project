@@ -3,10 +3,10 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
-secrets.cpp
+#secrets.cpp
 *.elf
 *.bin
 *.map
-.env
+#.env
 docs/
 generalScript.py
